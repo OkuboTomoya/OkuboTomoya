@@ -13,14 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class StripeService {
-	 @Value("${stripe.api-key}")
-	 private String stripeApiKey;
-
+	@Value("${stripe.api-key}")
+	private String stripeApiKey;
 
 	//セッションを作成し、Stripeに必要な情報を返す
 	public String createStripeSession(String houseName, ReservationRegisterForm reservationRegisterForm,
 			HttpServletRequest httpServletRequest) {
 		Stripe.apiKey = "sk_test_51Qm3MW4EiyRfw6pDvdHkmlQp0eFuRbDYxn5jQrz4ALEeZ7r1hGn6o09X9BKd0ywOHnPMXfuqdcuJna9gcxImGfrB00SySf2TSR";
+		Stripe.apiKey = stripeApiKey;
 		String requestUrl = new String(httpServletRequest.getRequestURL());
 
 		SessionCreateParams params = SessionCreateParams.builder()
